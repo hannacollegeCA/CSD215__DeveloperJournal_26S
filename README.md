@@ -1,1 +1,0 @@
-# CSD215__DeveloperJournal_26S

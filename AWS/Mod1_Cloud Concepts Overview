@@ -1,0 +1,521 @@
+# Module 1 — Cloud Concepts Overview
+---
+## 1. What Is Cloud Computing?
+Cloud computing is the **on‑demand delivery** of compute power, storage, databases, applications, and other IT resources over the internet using a **pay‑as‑you‑go** pricing model.
+AWS owns the hardware (True)> These resources run on servers located in global data centers owned by cloud providers like AWS.  
+Instead of buying hardware, you use AWS services as **building blocks** to create solutions that meet business and technical requirements.
+---
+## 2. Infrastructure as Software
+Cloud computing shifts infrastructure from **physical hardware** to **programmable software**.
+### What This Means
+You no longer install or manage physical machines. Instead, you create and manage infrastructure using:
+- Code  
+- Automation  
+- APIs  
+### Examples
+- Create a VPC → with code  
+- Launch EC2 instances → with code  
+- Create databases → with code  
+- Configure firewalls and load balancers → with code  
+### Why It Matters
+- Full automation  
+- Consistent and repeatable environments  
+- Faster deployments  
+- Elastic scalability  
+- Reduced human error  
+Infrastructure becomes **flexible, disposable, and software‑driven**.
+---
+## 3. Traditional Computing Model (On‑Premises)
+
+### On-Premisses[ 
+  - Avoid large capital purchases
+  - Use on‑demand capacity
+  - Go global in minutes
+  - Increase speed and agility
+]
+In the traditional model, infrastructure is **physical hardware**, which requires:
+
+[modelo tradicional você tem: 
+Long procurement cycles; 
+Hardware delays;
+Latência maior dependendo da infraestrutura]
+
+- Physical space  
+- Staff and maintenance  
+- Security  
+- Planning and high upfront investment  
+- Long procurement cycles  
+Capacity planning is based on **guessing peak usage**:
+- Too much capacity → expensive idle resources  
+- Too little capacity → insufficient performance  
+- Changing needs → more time and money spent on new hardware  
+Example: launching a website requires buying servers, installing them in a data center, and managing everything manually.
+---
+## 4. Cloud Computing Model
+In the cloud model, infrastructure is treated as **software**, not hardware.
+### Benefits
+- Highly flexible  
+- Easy and fast to change  
+- Lower upfront cost  
+- No hardware maintenance  
+- Automatic scaling  
+- Pay only for what you use  
+Cloud computing removes undifferentiated heavy lifting such as:
+- Hardware procurement  
+- Maintenance  
+- Capacity planning  
+Different service models and deployment strategies offer varying levels of control and management.
+---
+## 5. Cloud Service Models
+### ### IaaS — Infrastructure as a Service
+- Provides basic IT building blocks: networking, virtual servers, storage  
+- Highest level of control and flexibility  
+- Most similar to traditional infrastructure  
+### ### PaaS — Platform as a Service
+- No need to manage hardware or operating systems  
+- Focus on building and deploying applications  
+- Platform handles infrastructure management  
+### ### SaaS — Software as a Service
+- Complete, ready‑to‑use applications  
+- Provider manages everything (updates, security, infrastructure)  
+- You only use the software  
+- Example: web‑based email  
+---
+## 6. Cloud Deployment Models
+
+### ### Cloud (Public Cloud)
+- Entire application runs in the cloud  
+- Can be newly built or migrated  
+- Uses low‑level or fully managed services  
+- Benefits: elasticity, scalability, pay‑as‑you‑go  
+### ### Hybrid
+- Combines cloud resources with on‑premises infrastructure  
+- Most common during cloud migration  
+- Connects internal systems with cloud services  
+### ### On‑Premises / Private Cloud
+- Infrastructure hosted inside the organization  
+- May use virtualization  
+- Similar to traditional IT  
+- Fewer benefits compared to public cloud  
+---
+## 7. Similarities Between AWS and Traditional IT
+AWS provides cloud services that mirror traditional data center components:
+### Security
+- Security Groups, Network ACLs, IAM  
+  → similar to firewalls, ACLs, and administrators  
+### Networking
+- Elastic Load Balancing, Amazon VPC  
+  → similar to routers, switches, and network pipelines  
+### Servers
+- AMIs and EC2 instances  
+  → similar to physical servers  
+### Storage & Databases
+- EBS, EFS, S3, RDS  
+  → similar to DAS, SAN, NAS, and RDBMS  
+**Main idea:**  
+AWS enables almost everything you would do in a traditional data center—but with more automation, flexibility, and speed.
+---
+## 8. Section 1 — Key Takeaways
+- Cloud computing delivers IT resources on demand with pay‑as‑you‑go pricing.  
+- Cloud infrastructure is treated as software, not hardware.  
+- Three service models: **IaaS, PaaS, SaaS**.  
+- Three deployment models: **Cloud, Hybrid, On‑Premises**.  
+- AWS provides cloud equivalents for traditional IT components.
+---
+ 
+# Section 2 — Advantages of Cloud Computing
+
+This section explains why so many companies are moving to the cloud.  
+Cloud computing offers six major advantages that help organizations reduce costs, increase agility, and innovate faster.
+
+---
+
+## ## Advantage #1 — Trade Capital Expense for Variable Expense
+
+Traditional IT requires large **capital expenses (capex)** to buy, install, and maintain physical hardware.  
+You pay for the entire data center whether you use it or not.
+
+With cloud computing, costs become **variable expenses**:
+- You pay **only when you consume resources**
+- You pay **only for the amount you use**
+- No upfront investment in servers or data centers
+- Capacity can be added in **minutes**, not weeks
+
+This reduces maintenance and allows teams to focus on core business goals instead of managing hardware.
+
+---
+
+## ## Advantage #2 — Benefit from Massive Economies of Scale
+
+Economies of scale > Cloud providers like AWS aggregate usage from **hundreds of thousands of customers**.  
+This large scale allows them to:
+- Operate more efficiently  
+- Reduce per‑unit costs  
+- Offer **lower pay‑as‑you‑go prices** than most companies can achieve on their own  
+
+Organizations benefit directly from these economies of scale.
+
+---
+
+## ## Advantage #3 — Stop Guessing Capacity
+
+In traditional environments, you must guess how much capacity you will need:
+- Guess too high → expensive idle resources  
+- Guess too low → insufficient performance  
+
+With cloud computing:
+- You can scale **up or down** at any time  
+- You get exactly the capacity you need  
+- Scaling happens in **minutes**  
+
+Capacity planning becomes simple and risk‑free.
+
+---
+
+## ## Advantage #4 — Increase Speed and Agility
+
+In the cloud, new IT resources are available **with just a click**.  
+This reduces provisioning time from **weeks to minutes**.
+
+As a result:
+- Developers can experiment faster  
+- Innovation becomes cheaper and easier  
+- Organizations gain significant agility  
+
+The cloud dramatically accelerates development and deployment cycles.
+
+---
+
+## ## Advantage #5 — Stop Spending Money on Running and Maintaining Data Centers
+
+> NOT a benefit of cloud computing (racking, stacking, powering servers)
+
+Cloud computing removes the need to:
+- Operate physical data centers  
+- Maintain hardware  
+- Handle power, cooling, and physical security  
+
+Instead, teams can focus on:
+- Building applications  
+- Improving customer experience  
+- Delivering business value  
+
+AWS handles the heavy lifting of infrastructure management.
+
+---
+
+## ## Advantage #6 — Go Global in Minutes
+
+With AWS, you can deploy applications to **multiple Regions worldwide** in just a few clicks.
+
+This enables:
+- Lower latency for global customers  
+- Better user experience  
+- Fast and cost‑effective international expansion  
+
+Going global becomes simple and accessible for any organization.
+
+---
+
+# ## Key Takeaways — Section 2
+
+The six advantages of cloud computing are:
+
+- Trade capital expense for variable expense  
+- Massive economies of scale  
+- Stop guessing capacity  
+- Increase speed and agility  
+- Stop spending money on running and maintaining data centers  
+- Go global in minutes  
+
+---
+ 
+# Section 3 — Introduction to Amazon Web Services (AWS)
+
+This section introduces the concept of web services, explains what AWS is, shows how AWS services are organized, and describes how you can interact with the AWS Cloud. It also provides a simple example of how different AWS services work together.
+
+---
+
+## ## What Are Web Services?
+
+A **web service** is software that:
+- Is available over the internet or a private network  
+- Uses standardized data formats (XML or JSON)  
+- Communicates through APIs  
+- Is not tied to any specific OS or programming language  
+- Is self‑describing and discoverable  
+
+Web services allow applications to interact with each other in a consistent, platform‑independent way.
+
+---
+
+## ## What Is AWS?
+
+**Amazon Web Services (AWS)** is a secure cloud platform offering a wide range of global, cloud‑based products such as:
+- Compute  
+- Storage  
+- Networking  
+- Databases  
+- Security  
+- Management tools  
+
+### Key Characteristics
+- **On‑demand provisioning**: Resources are ready in minutes  
+- **Highly flexible**: Reconfigure, update, scale up/down automatically  
+- **Pay‑as‑you‑go**: Costs become operational expenses, not capital expenses  
+- **Modular building blocks**: Services are designed to work together to build any type of application  
+
+---
+
+## ## Categories of AWS Services
+
+AWS organizes its services into categories such as:
+- Compute  
+- Storage  
+- Database  
+- Networking & Content Delivery  
+- Security, Identity & Compliance  
+- Management & Governance  
+- Machine Learning  
+- Analytics  
+- IoT  
+- And many more  
+
+Each category contains multiple services you can combine to build solutions.
+
+---
+
+## ## Simple Solution Example
+
+A basic AWS architecture might include:
+- **Amazon EC2 (Compute)** → receives customer data  
+- **Amazon S3 (Storage)** → stores batched objects  
+- **Amazon DynamoDB (Database)** → indexes and queries customer data  
+- **Amazon VPC (Networking)** → isolates and secures the environment  
+
+This example shows how services from different categories can be combined to create a functional application.
+
+---
+
+## ## Choosing a Service
+
+Your choice depends on **business goals** and **technical requirements**.
+
+### Examples of Compute Services
+- **Amazon EC2** → Full control over compute resources  
+- **AWS Lambda** → Run code without managing servers  
+- **AWS Elastic Beanstalk** → Automated deployment and scaling of web apps  
+- **Amazon Lightsail** → Simple platform for small applications  
+- **AWS Batch** → Large-scale batch processing  
+- **AWS Outposts** → AWS infrastructure on-premises  
+- **Amazon ECS / EKS** → Container orchestration  
+- **AWS Fargate** → Serverless containers  
+- **VMware Cloud on AWS** → Migrate VMware workloads to AWS  
+
+AWS offers many options, and the number of services continues to grow.
+
+---
+
+## ## Services Covered in This Course
+
+This module focuses on commonly used services in categories such as:
+- Compute  
+- Storage  
+- Database  
+- Networking & Content Delivery  
+- Security, Identity & Compliance  
+- Management & Governance  
+- Cost Management  
+
+### Key Services Mentioned
+- **EC2** → virtual server  
+- **EBS** → server disk  
+- **ECR** → Docker image repo  
+- **ECS** → container orchestration  
+- **EFS** → shared file system  
+- **EKS** → managed Kubernetes  
+- **RDS** → managed relational database  
+- **S3** → object storage  
+- **VPC** → private network  
+- **IAM** → users and permissions  
+- **KMS** → encryption keys  
+
+---
+
+## ## Three Ways to Interact with AWS
+
+Which of these are ways to access AWS core services
+
+### **1. AWS Management Console**
+- Web-based graphical interface  
+- Easy to use  
+- Some new features may appear later in the console  
+
+### **2. AWS Command Line Interface (CLI)**
+- Command-based tool for Linux, macOS, and Windows  
+- Useful for automation and scripting  
+
+### **3. AWS SDKs**
+- Libraries for programming languages (Python, Java, JavaScript, etc.)  
+- Allows building applications that interact with AWS programmatically  
+
+All three methods use the same underlying **REST-like API**.
+
+---
+
+# ## Section 3 — Key Takeaways
+
+- AWS is a secure cloud platform offering a wide range of global cloud-based services.  
+- AWS services are grouped into categories, each containing multiple options.  
+- You choose services based on your business needs and technical requirements.  
+- There are three main ways to interact with AWS: Console, CLI, and SDKs.  
+
+ 
+Section 4: Moving to the AWS Cloud –The AWS Cloud Adoption Framework (AWS CAF)
+
+# Section 4 — Moving to the AWS Cloud  
+## The AWS Cloud Adoption Framework (AWS CAF)
+
+Cloud computing brings many advantages, but cloud adoption is not instantaneous.  
+Organizations must align **people, processes, and technology** to successfully migrate to the cloud.  
+The AWS Cloud Adoption Framework (AWS CAF) helps organizations plan, structure, and accelerate their cloud journey.
+
+---
+
+## ## What Is the AWS Cloud Adoption Framework (AWS CAF)?
+
+The **AWS CAF** provides:
+- Guidance  
+- Best practices  
+- A structured approach  
+
+…to help organizations understand their **current state**, define their **target state**, and plan the **transition** needed for successful cloud adoption.
+
+The CAF identifies **gaps in skills, processes, and capabilities**, enabling organizations to create workstreams that support a smooth cloud migration.
+
+CAF organizes its guidance into **six core perspectives**, grouped into business-focused and technical-focused areas.
+
+---
+
+# ## The Six AWS CAF Perspectives
+
+### **Business-Focused Perspectives**
+These perspectives focus on **business capabilities**.
+
+---
+
+## ### 1. Business Perspective
+**Goal:** Ensure IT strategy aligns with business strategy.  
+**Stakeholders:** Business managers, finance managers, budget owners, strategy leaders.
+
+They use the CAF to:
+- Build a strong business case for cloud adoption  
+- Prioritize cloud initiatives  
+- Ensure IT investments produce measurable business results  
+
+---
+
+## ### 2. People Perspective
+**Goal:** Prepare the organization’s workforce for cloud adoption.  
+**Stakeholders:** HR teams, staffing managers, people managers.
+
+They use the CAF to:
+- Evaluate organizational roles and structures  
+- Identify skill gaps  
+- Prioritize training and staffing  
+- Build an agile, cloud-ready organization  
+
+---
+
+## ### 3. Governance Perspective
+**Goal:** Align IT governance with business goals.  
+**Stakeholders:** CIO, program managers, enterprise architects, business analysts.
+
+They use the CAF to:
+- Define processes and skills needed for cloud governance  
+- Maximize business value  
+- Minimize business risks  
+- Ensure IT strategy supports business strategy  
+
+---
+
+### **Technical-Focused Perspectives**
+These perspectives focus on **technology capabilities**.
+
+---
+
+## ### 4. Platform Perspective
+**Goal:** Design and build the cloud environment.  
+**Stakeholders:** CTO, IT managers, solutions architects.
+
+They use the CAF to:
+- Understand and communicate system architecture  
+- Define the target-state architecture  
+- Apply cloud design principles and patterns  
+- Plan migrations of on-premises workloads  
+
+---
+
+## ### 5. Security Perspective
+**Goal:** Ensure security, visibility, auditability, and control.  
+**Stakeholders:** CISO, security managers, security analysts.
+
+They use the CAF to:
+- Define and implement security controls  
+- Meet organizational security objectives  
+- Maintain compliance and governance  
+
+---
+
+## ### 6. Operations Perspective
+**Goal:** Define how the organization runs day-to-day operations in the cloud.  
+**Stakeholders:** IT operations managers, IT support managers.
+
+They use the CAF to:
+- Establish operational procedures  
+- Identify process changes needed for cloud adoption  
+- Support business operations continuously  
+
+---
+
+# ## Section 4 — Key Takeaways
+
+- Cloud adoption requires alignment across **people, processes, and technology**.  
+- The **AWS CAF** helps organizations plan and accelerate their cloud journey.  
+- The CAF is divided into **six perspectives**:  
+  - **Business**  
+  - **People**  
+  - **Governance**  
+  - **Platform**  
+  - **Security**  
+  - **Operations**  
+- Each perspective contains capabilities owned by specific stakeholders.  
+- Identifying gaps in these capabilities helps organizations build effective cloud adoption plans.
+
+---
+ 
+# Sample Exam Question — Module Review
+
+## Question
+Why is AWS more economical than traditional data centers for applications with varying compute workloads?
+
+### Choices
+A. Amazon EC2 costs are billed on a monthly basis  
+B. Customers retain full administrative access to their Amazon EC2 instances  
+C. Amazon EC2 instances can be launched on-demand when needed  
+D. Customers can permanently run enough instances to handle peak workloads  
+
+---
+
+## Correct Answer: **C**
+
+### Explanation
+AWS is more economical because **EC2 instances can be launched on-demand**, meaning you only pay for compute capacity when you actually need it.  
+This avoids the cost of maintaining idle servers and supports variable workloads efficiently.
+
+---
+### Why AWS is more economical
+- Pay only for what you use
+- Stop guessing capacity
+- Scale on demand
+---

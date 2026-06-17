@@ -1,0 +1,62 @@
+## 1. Reserved Instances Options
+**Question:** What options are available for Reserved Instances?  
+- AURI  
+- PURI  
+- NURI  
+
+---
+
+## 2. Billing History
+Question: Where can a customer get details about EC2 billing activity from 3 months ago?  
+- AWS Cost Explorer
+
+---
+
+## 3. Reserved Instance Payment Requirement
+Question: True or *false*? To receive the discounted rate for Reserved Instances, you must pay the full amount upfront.  
+
+
+---
+
+## 4. AWS Pricing Model
+Question: Which statement is true about the AWS pricing model?  
+- Storage is typically charged per gigabyte
+
+---
+
+## 5. AWS Support Plans
+Question: What are the four AWS Support plans?    
+- Basic  
+- Developer  
+- Business  
+- Enterprise  
+
+---
+
+## 6. Cost Estimation Tool
+Question: What AWS tool lets you explore services and estimate costs?  
+- AWS Pricing Calculator
+
+---
+
+## 7. AWS Cost Optimization Concept
+Question: As AWS grows and reduces costs, what is this optimization called?  
+- Economies of scale
+
+---
+
+## 8. Free Services Clarification
+Question: *True* or false? AWS offers some services at no charge, but you may be billed for resources used with them.  
+
+---
+
+## 9. AWS Organizations Benefits
+Question: What are benefits of using AWS Organizations? (Choose two.)  
+- Ability to create groups of accounts and attach policies  
+- Ability to automate account creation and management using APIs  
+
+---
+
+## 10. Free Tier Limits
+Question: True or *false*? Unlimited services are available in the AWS Free Tier for 12 months.  
+

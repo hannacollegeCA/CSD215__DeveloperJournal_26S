@@ -1,0 +1,119 @@
+# Module 3 — AWS Global Infrastructure Overview  
+
+# Section 1: AWS Global Infrastructure  
+
+the goal is to understand **what each component is**, **why it exists**, and **how it impacts cloud applications** in terms of availability, performance, and resilience.
+
+---
+
+## What is the AWS Global Infrastructure?
+
+The AWS Global Infrastructure is the worldwide system that supports all AWS cloud services.  
+It is designed to be:
+
+- **Flexible**  
+- **Reliable**  
+- **Scalable**  
+- **Secure**  
+- **High‑performance**
+
+It is constantly expanding with new Regions, Availability Zones, and Points of Presence.
+
+---
+
+## AWS Regions
+
+### What is a Region?
+A **Region** is a geographic area containing multiple Availability Zones.  
+Each Region is **isolated** to support compliance, fault tolerance, and data sovereignty.
+
+- Data is **not replicated automatically** across Regions.  
+- Regions introduced after 2019 must be **manually enabled**.  
+- Special Regions exist (e.g., **AWS GovCloud**, **AWS China**).
+
+### Choosing a Region
+- **Compliance requirements**  
+- **Latency** (distance to users)  
+- **Service availability**  
+- **Cost differences**
+
+---
+
+## Availability Zones (AZs)
+
+### What is an AZ?
+An **Availability Zone** is an isolated part of a Region, made up of one or more independent data centers.
+
+- Each AZ has its own power, cooling, and networking.  
+- AZs are physically separated but connected with **high‑speed, low‑latency fiber**.  
+- Designed for **fault isolation**.  
+- Best practice: deploy across **multiple AZs** for high availability.
+
+---
+
+## AWS Data Centers
+
+### **What is a Data Center?**
+A data center is the physical facility where AWS servers run.  
+Customers cannot choose specific data centers—only the AZ.
+
+- Typically contain **50,000–80,000 servers**.  
+- Built with redundant power, cooling, and networking.  
+- Locations are **not publicly disclosed**.  
+- AWS uses custom hardware and automated failover systems.
+
+---
+
+## Points of Presence (PoPs)
+
+### What Are PoPs?
+Global locations used to deliver content with low latency.  
+They include:
+
+- **Edge Locations**  
+- **Regional Edge Caches**
+
+Used by services such as:
+
+- Amazon CloudFront  
+- Amazon Route 53  
+- AWS Shield  
+- AWS WAF  
+
+### Edge Locations
+- Serve frequently accessed content.  
+- Route users to the nearest location.  
+- Reduce latency.
+
+### Regional Edge Caches
+- Store less frequently accessed content.  
+- Reduce load on origin servers.  
+- Improve performance for low‑frequency objects.
+
+---
+
+## Infrastructure Features
+
+### Elasticity
+Automatically adjusts capacity based on demand.
+
+### Scalability
+Supports long‑term growth without performance loss.
+
+### Fault Tolerance
+Redundant components allow systems to continue operating during failures.
+
+### High Availability
+Designed to minimize downtime with automated failover.
+
+---
+
+# Key Takeaways
+
+- AWS infrastructure is built on **Regions**, **Availability Zones**, and **Points of Presence**.  
+- Region choice depends on **latency**, **compliance**, **service availability**, and **cost**.  
+- AZs provide **fault isolation** and support high‑availability architectures.  
+- PoPs improve global performance through caching.  
+- AWS infrastructure is **elastic**, **scalable**, **fault‑tolerant**, and **highly available**.
+
+

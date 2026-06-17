@@ -1,0 +1,237 @@
+
+## 1. Core FP Idea
+Functional programming starts by separating everything into:
+- **Data** → facts, no behavior
+- **Calculations** → pure functions (no side effects)
+- **Actions** → things where timing/order matters (side effects)
+
+This separation makes code easier to test, reason about, and maintain.
+
+---
+
+# 2. Actions
+
+## Definition
+An **action** is something where:
+- timing matters  
+- order matters  
+- it causes a side effect  
+
+Examples:
+- printing
+- sending email
+- writing to DB
+- modifying global variables
+- reading current time
+
+### Example (action):
+```java
+System.out.println("Hello"); // side effect
+```
+
+Actions are dangerous because:
+- they are hard to test
+- they are contagious (any function calling an action becomes an action)
+
+---
+
+# 3. Data
+
+## Definition
+**Data = facts about events.**  
+Data does no work.
+
+Examples:
+- lists
+- objects
+- records
+- arrays
+
+### Immutable vs Mutable
+- **Immutable data** → cannot change (preferred in FP)
+- **Mutable data** → can change (causes bugs)
+
+### Example (immutable data with Java record):
+```java
+record Subscriber(String email, int recCount) {}
+```
+
+---
+
+# 4. Calculations
+
+## Definition
+A **calculation**:
+- takes input → returns output
+- has **no side effects**
+- always returns the same result for the same input
+- is a pure function
+
+### Example (calculation):
+```java
+int sum(List<Integer> nums) {
+    return nums.stream().mapToInt(n -> n).sum();
+}
+```
+
+### Referential Transparency
+A function is referentially transparent if you can replace the call with its return value without changing program behavior.
+
+### Example (transparent):
+```java
+double hyp(double a, double b) {
+    return Math.sqrt(a*a + b*b);
+}
+```
+
+### Example (NOT transparent):
+```java
+double hyp(double a, double b) {
+    double h = Math.sqrt(a*a + b*b);
+    System.out.println(h); // side effect
+    return h;
+}
+```
+
+---
+
+# 5. Function Composition
+Calculations can be combined easily because they are pure.
+
+Example:
+```java
+int doubleIt(int x) { return x * 2; }
+int addOne(int x) { return x + 1; }
+
+int result = addOne(doubleIt(5)); // 11
+```
+
+---
+
+# 6. Data > Calculations > Actions (Preference Order)
+Functional programmers prefer:
+1. **Data** (safest)
+2. **Calculations** (pure, testable)
+3. **Actions** (dangerous, must isolate)
+
+---
+
+# 7. Functional Core / Imperative Shell
+
+## Functional Core
+- pure functions
+- immutable data
+- business logic
+- no I/O
+
+## Imperative Shell
+- minimal logic
+- handles I/O (DB, network, files)
+- sequences actions
+- coordinates data
+
+### Diagram (conceptual)
+```
+[ Imperative Shell ]
+    - I/O
+    - sequencing
+    - controllers
+
+[ Functional Core ]
+    - pure functions
+    - immutable data
+```
+
+---
+
+# 8. Extracting Calculations from Actions
+
+## Goal
+Turn messy action code into:
+- a small action wrapper
+- a clean calculation you can test
+
+### Example (bad: action mixed with calculation)
+```java
+shoppingCartTotal = 0.0;
+for (var item : shoppingCart) {
+    shoppingCartTotal += item.price();
+}
+```
+
+### Step 1 — Extract calculation
+```java
+double calcTotal(List<CartItem> cart) {
+    double total = 0.0;
+    for (var item : cart) total += item.price();
+    return total;
+}
+```
+
+### Step 2 — Use calculation inside action
+```java
+void calcCartTotal() {
+    shoppingCartTotal = calcTotal(shoppingCart);
+}
+```
+
+---
+
+# 9. Implicit Inputs and Outputs
+
+## Implicit Input
+Reading something external (global variable, system time).
+
+## Implicit Output
+Modifying something external (global variable, list mutation).
+
+### Example (implicit output → action):
+```java
+cart.add(item); // modifies external list
+```
+
+### Fixed version (pure):
+```java
+List<CartItem> addItem(List<CartItem> cart, CartItem item) {
+    var newCart = new ArrayList<>(cart);
+    newCart.add(item);
+    return newCart;
+}
+```
+
+---
+
+# 10. Practical FP Heuristic
+
+Ask yourself:
+- **Data:** What does my program need to know?
+- **Calculations:** What does my program need to decide?
+- **Actions:** What must happen, and in what order?
+
+---
+
+# 11. Example: CouponDog
+
+## Data
+- subscribers
+- coupons
+
+## Calculations
+- determine coupon rank
+- plan email content
+
+## Actions
+- fetch from DB
+- send emails
+
+Breaking actions into data + calculations makes the system easier to test.
+
+---
+
+# Final Summary
+- **Data** = facts  
+- **Calculations** = pure functions  
+- **Actions** = side effects  
+
+Functional programming =  
+**prefer data → prefer calculations → isolate actions**  

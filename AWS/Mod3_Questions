@@ -1,0 +1,39 @@
+## 1. CloudFront Low Latency  
+**Question:** Which component of the AWS Global Infrastructure does Amazon CloudFront use to ensure low‑latency delivery?  
+- AWS edge locations
+
+## 2. Region Proximity  
+**Question:** You can run applications and workloads from a Region closer to the end users to ______ latency.  
+- decrease
+
+## 3. AWS Service Categories  
+**Question:** *True* or False? Networking, storage, compute, and databases are examples of service categories that AWS offers.  
+
+## 4. Regions and Availability Zones  
+**Question:** Which of the following are geographic areas that host two or more Availability Zones?  
+- AWS Regions
+
+## 5. Fault Tolerance vs Elasticity  
+**Question:** _____ means the infrastructure has built‑in component redundancy and _____ means that resources dynamically adjust to capacity requirements.  
+- Fault tolerant  
+- Elastic and scalable
+
+## 6. AZ Connectivity  
+**Question:** *True* or False? Availability Zones within a Region are connected through low‑latency links.  
+
+
+## 7. Availability Zone Facts  
+**Question:** Which statement about Availability Zones is NOT true?  
+- A data center can be used for more than one Availability Zone
+
+## 8. Region Characteristics  
+**Question:** What is true about Regions? 
+- A Region is a physical location that has multiple Availability Zones  
+- Each Region is located in a separate geographic area
+
+## 9. Best Practice for Compute  
+**Question:** AWS highly recommends provisioning your compute resources across ______ Availability Zones.  
+- multiple
+
+## 10. Edge Location Geography  
+**Question:** True or *False*? Edge locations are only located in the same general area as Regions.  

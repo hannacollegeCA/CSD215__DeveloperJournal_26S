@@ -1,0 +1,43 @@
+## 1. Advantages of Cloud Computing
+Question: What are the advantages of cloud computing over on‑premises computing?
+Answer:
+- Avoid large capital purchases
+- Use on‑demand capacity
+- Go global in minutes
+- Increase speed and agility
+
+## 2. AWS Pricing Model
+Question: What pricing model lets AWS customers pay only when they use resources?
+Answer: Pay as you go
+
+## 3. Who owns the hardware? (True/False)
+Question: AWS owns and maintains the hardware, and you provision what you need.
+Answer: True
+
+## 4. NOT a Benefit of Cloud Computing
+Question: Which of these is NOT a benefit of cloud computing?
+Answer: Pay for racking, stacking, and powering servers
+
+## 5. NOT a Benefit of AWS Cloud
+Question: Which of the following are NOT benefits of AWS Cloud?
+Answers:
+- Multiple procurement cycles
+- High latency
+
+## 6. Economies of Scale
+Question: Economies of scale result from…
+Answer: Having hundreds of thousands of customers aggregated in the cloud
+
+## 7. Ways to Access AWS Core Services
+Answers:
+- AWS Management Console
+- AWS CLI
+- AWS SDKs
+
+## 8. Why AWS Is More Economical
+Question: Why is AWS more economical than traditional data centers?
+Answer: EC2 instances can be launched on‑demand when needed
+
+## 9. True or False — Cloud computing provides access to services, and YOU own the hardware
+Answer: False  
+AWS owns the hardware, not you.

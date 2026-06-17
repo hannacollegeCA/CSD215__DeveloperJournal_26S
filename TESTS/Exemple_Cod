@@ -1,0 +1,146 @@
+# Test 1 — Examples
+
+# 1. Identify Data / Calculation / Action
+
+## DATA (just information)
+```java
+record User(String name, int age) {}
+List<Integer> nums = List.of(1, 2, 3);
+```
+Why?  
+Data does NOT do anything. It’s only facts.
+
+---
+
+## CALCULATION (pure function)
+```java
+int doubleIt(int x) {
+    return x * 2;
+}
+```
+Why?  
+- No side effects  
+- Same input → same output  
+- Only computes something  
+
+---
+
+## ACTION (side effect)
+```java
+System.out.println("Hello");
+db.save(user);
+globalCount++;
+```
+Why?  
+- Changes something outside the function  
+- Timing/order matters  
+
+---
+
+# 2. Convert an Action into a Calculation
+
+## BEFORE (impure — action)
+```java
+int total = 0;
+
+void addToTotal(int amount) {
+    total += amount; // modifies global → action
+}
+```
+
+## AFTER (pure — calculation)
+```java
+int addToTotal(int currentTotal, int amount) {
+    return currentTotal + amount; // no side effects
+}
+```
+
+Key idea:  
+**Remove global variables → use parameters + return values.**
+
+---
+
+# 3. Remove Implicit Inputs/Outputs
+
+## BEFORE (implicit output — mutates list)
+```java
+void addItem(String name, List<String> cart) {
+    cart.add(name); // modifies external list → action
+}
+```
+
+## AFTER (pure — no mutation)
+```java
+List<String> addItem(String name, List<String> cart) {
+    var newCart = new ArrayList<>(cart); // copy
+    newCart.add(name);
+    return newCart; // explicit output
+}
+```
+
+Key idea:  
+**Never modify external data. Always return a new value.**
+
+---
+
+# 4. Write a Pure Function (Calculation)
+
+A pure function must:
+- depend ONLY on its parameters  
+- have NO side effects  
+- always return the same result  
+
+Example:
+```java
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+```
+
+Another example:
+```java
+boolean isAdult(int age) {
+    return age >= 18;
+}
+```
+
+---
+
+# 5. Use a Record or Enum
+
+## RECORD (immutable data)
+```java
+record Product(String name, double price) {}
+```
+
+## ENUM (fixed set of values)
+```java
+enum CouponRank { GOOD, BEST, BAD }
+```
+
+## Using both together:
+```java
+record Coupon(String code, CouponRank rank) {}
+
+var c = new Coupon("PROMO10", CouponRank.GOOD);
+```
+
+Why?  
+- Records = clean immutable data  
+- Enums = safe fixed values (compiler checks them)  
+
+---
+
+# FINAL QUICK RECAP
+
+- **Data** = facts  
+- **Calculation** = pure function  
+- **Action** = side effect  
+
+- To make code pure:  
+  > remove globals  
+  > remove mutations  
+  > use parameters + return values  
+
+- Records = immutable data  
+- Enums = fixed safe values  

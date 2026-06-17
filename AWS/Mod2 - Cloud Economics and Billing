@@ -1,0 +1,700 @@
+# Module 2 — Cloud Economics and Billing  
+
+# Section 1: Fundamentals of Pricing
+
+This section explains how AWS pricing works and why it’s different from traditional data centers. The main idea is simple: **you only pay for what you actually use**, and AWS gives you multiple ways to reduce costs as your usage grows.
+
+---
+
+## Core Cost Drivers
+AWS pricing is mainly based on three things:
+
+- **Compute** (EC2, Lambda)
+- **Storage** (S3, EBS, EFS…) (is charged per GB — this is the accurate statement)
+- **Outbound data transfer** (data leaving AWS)
+
+Notes:
+- **Inbound data transfer is usually free.** 
+- **Transfers inside the same region are usually free**, but always check exceptions.
+- Outbound data transfer is **aggregated** and appears as *AWS Data Transfer Out* on the bill.
+
+[Inbound data transfer is usually free, not charged per GB.
+
+Storage (like S3, EBS) is charged per GB — this is the accurate statement.
+
+Compute is not charged monthly — it’s charged per second or per hour depending on the service.
+
+Outbound data transfer is NOT free — it is charged.]
+
+---
+
+## How You Pay for AWS
+AWS uses a **utility-style pricing model**, similar to electricity or water.  
+No long-term contracts, no big upfront investments.
+
+AWS pricing philosophy:
+- **Pay for what you use**
+- **Pay less when you reserve**
+- **Pay less when you use more**
+- **Pay even less as AWS grows**
+
+---
+
+## 1. Pay for What You Use
+You don’t need to buy servers, licenses, or physical infrastructure.  
+Everything is on-demand:
+
+- No upfront costs  
+- No long-term commitments  
+- No complex licensing  
+- Scale up or down whenever you want  
+
+This lets companies focus on innovation instead of maintaining hardware.
+
+---
+
+## 2. Pay Less When You Reserve
+For services like **EC2** and **RDS**, you can buy **Reserved Instances (RIs)** and save up to **75%**.
+
+[AWS offers three payment options]
+
+Three types of RIs:
+- **AURI** — All Upfront  
+- **PURI** — Partial Upfront  
+- **NURI** — No Upfront  
+
+More upfront = bigger discount.  
+Reserving capacity helps with:
+- Budget predictability  
+- Long-term planning  
+- Lower risk  
+
+---
+
+## 3. Pay Less by Using More
+Some AWS services offer **volume discounts**.
+
+Example:  
+**S3 has tiered pricing** → the more GB you store, the cheaper each GB becomes.
+
+AWS also offers different storage classes so you can optimize cost based on:
+- Access frequency  
+- Performance needs  
+- Retrieval time  
+
+This is how AWS gives you **economies of scale**.
+
+[Economies of scale
+Larger infrastructure
+
+Better efficiency
+
+Bulk purchasing power
+
+Global scale]   
+
+---
+
+## 4. Pay Even Less as AWS Grows
+AWS constantly reduces its own costs (hardware, power, operations).  
+When AWS becomes more efficient, **customers get lower prices**.
+
+Fun fact:  
+AWS has reduced prices **75+ times** since 2006.
+
+Also, AWS often replaces older hardware with newer, faster hardware **at no extra cost**.
+
+---
+
+## Custom Pricing
+For very large or unique workloads, AWS can create **custom pricing agreements**.
+
+---
+
+## AWS Free Tier
+New AWS customers get **12 months of free usage** for selected services.
+
+Examples:
+- **EC2 t2.micro** (free for 1 year)
+- Free tiers for **S3**, **EBS**, **Elastic Load Balancing**, and more
+
+
+---
+
+## Services with No Additional Charge
+These AWS services are free to use (but resources they create may cost money):
+
+- **Amazon VPC**  
+- **IAM**  
+- **Consolidated Billing**  
+- **Elastic Beanstalk**  
+- **CloudFormation**  
+- **Auto Scaling**  
+- **AWS OpsWorks**
+
+Example: Auto Scaling is free, but the **EC2 instances it launches are not**.
+
+---
+
+
+# Section 2: Total Cost of Ownership (TCO)
+
+This section explains how to compare the real cost of running workloads on‑premises versus in the AWS Cloud. TCO helps organizations understand not only what they spend today, but what they could save by moving to the cloud.
+
+---
+
+## On-Premises vs Cloud
+
+### On-Premises (Traditional Model)
+- Company owns and manages all infrastructure.
+- Costs are capital expenses (CapEx):
+  - Hardware
+  - Software licenses
+  - Data center space
+  - Power and cooling
+  - Maintenance staff
+- Scaling up is slow and expensive.
+- Scaling down does not reduce fixed costs.
+- Requires long planning cycles and constant hardware refresh.
+
+### AWS Cloud (Consumption Model)
+- AWS owns the infrastructure; customer pays only for what they use.
+- Costs are operational expenses (OpEx).
+- Scaling up or down is fast and automatic.
+- Pricing is transparent and based on usage.
+- Focus is on agility, flexibility, and speed.
+
+---
+
+## What is TCO?
+Total Cost of Ownership (TCO) = All direct and indirect costs of running a system.
+
+Used to compare:
+- Running a workload on-premises
+- Running the same workload in AWS
+
+TCO helps build a business case and understand the full financial impact of each option.
+
+---
+
+## TCO Components
+
+### On-Premises Costs
+Often underestimated because they are spread across many areas:
+- Server costs (hardware and software)
+- Storage costs (hardware, administration, facilities)
+- Network costs (hardware, administration, facilities)
+- IT labor (operations, security, backups, monitoring)
+- Facilities (power, cooling, physical security, taxes, upgrades)
+
+### Cloud Costs
+- Transparent pricing
+- Based on usage
+- Easy to calculate
+- No hardware refresh cycles
+- No physical facilities required
+
+---
+
+## Example: 3-Year Cost Comparison
+
+### On-Premises Setup
+- 1 virtual machine  
+- 4 CPUs, 16 GB RAM  
+- Linux OS  
+- 100% utilization  
+
+### AWS Setup
+- 1 m4.xlarge instance  
+- 4 CPUs, 16 GB RAM  
+- 3-year Partial Upfront Reserved Instance  
+
+### Results (3 Years)
+- On-Premises: $167,422  
+- AWS: $7,509  
+- Savings: approximately 96% (about $159,913 saved)
+
+Reason for the difference:
+- On-premises costs continue even when not fully used.
+- AWS resources can be turned off when not needed.
+
+---
+
+## AWS Pricing Calculator
+
+A tool to estimate AWS monthly costs before building anything.
+
+### What it helps you do:
+- Estimate monthly AWS costs
+- Model different architectures
+- Compare instance types and pricing options
+- Identify cost-saving opportunities
+- Organize estimates into groups (by project, department, etc.)
+
+### Estimate Breakdown:
+- First 12-month total
+- Total upfront
+- Total monthly
+- Cost per service inside each group
+
+---
+
+## Hard vs Soft Benefits
+
+### Hard Benefits (Easy to Measure)
+- Lower compute, storage, network, and security costs
+- Fewer hardware and software purchases
+- Reduced operational costs
+- Cheaper backup and disaster recovery
+- Less staff needed for maintenance
+
+### Soft Benefits (Harder to Measure but Very Valuable)
+- Faster development cycles
+- Higher developer productivity
+- Better customer satisfaction
+- More agile business processes
+- Easier global expansion
+- Ability to reuse cloud services to build new solutions faster
+
+---
+
+# Case Study: Delaware North
+
+A real example of how TCO applies in practice.
+
+---
+
+## Company Background
+- Global hospitality company
+- More than 200 locations worldwide
+- Serves 500 million customers per year
+- $3 billion annual revenue
+- Founded in 1915
+
+---
+
+## Their Challenge
+- On-premises data center becoming too expensive
+- Aging hardware requiring constant upgrades
+- Need to deploy new solutions quickly
+- Global operations demanding more agility
+
+---
+
+## Results After Moving to AWS (Within 6 Months)
+
+### Improved Security and Compliance
+- AWS security best practices reduced compliance workload
+- Saved time and money
+- Stronger security for retail operations
+
+### Better Disaster Recovery
+- Cheaper and more reliable DR
+- Seamless failovers
+- Stronger business continuity
+
+### Faster Deployment
+- Before AWS: provisioning took 2–3 weeks
+- After AWS: provisioning takes 1 day
+- Faster onboarding of new business units
+
+### Operational Efficiency
+- Removed outdated processes
+- Cleaned up documentation
+- Faster testing and development
+- More agile IT operations
+
+---
+ 
+
+# Section 3: AWS Organizations
+
+AWS Organizations is a free service that helps you centrally manage multiple AWS accounts. It is mainly used for consolidated billing, centralized governance, and applying policies across accounts in a structured way.
+
+---
+
+## Introduction to AWS Organizations
+
+AWS Organizations allows you to:
+- Group multiple AWS accounts into a single organization.
+- Apply centralized access controls and restrictions.
+- Automate account creation and management.
+- Use consolidated billing to manage all accounts under one payment method.
+
+This is especially useful for companies with multiple teams, departments, or projects that each need their own AWS account.
+
+---
+
+## Key Terminology
+
+### Organization (Root)
+- The top-level container.
+- Every organization has one root.
+- All accounts and organizational units (OUs) exist under the root.
+
+### Organizational Unit (OU)
+- A container for accounts.
+- Can also contain other OUs (nested structure).
+- Helps create a hierarchy similar to a tree.
+- Policies applied to an OU affect all accounts inside it.
+
+### Account
+- A standard AWS account that contains resources.
+- Each account belongs to exactly one OU.
+- Policies can be attached directly to an account.
+
+### Policy
+- A document that defines what is allowed or denied.
+- In AWS Organizations, the main type is the Service Control Policy (SCP).
+
+Policies applied at higher levels flow down to all child OUs and accounts.
+
+---
+
+## Key Features and Benefits
+
+AWS Organizations enables you to:
+- Create Service Control Policies (SCPs) to restrict or allow AWS services across accounts.
+- **Group accounts and apply policies to the entire group.**
+- **Automate account creation using APIs.**
+- Use consolidated billing:
+  - One bill for all accounts.
+  - Easier cost tracking.
+  - Volume discounts from aggregated usage.
+
+Consolidated billing simplifies financial management and helps reduce costs.
+
+---
+
+## Security with AWS Organizations
+
+AWS Organizations does not replace IAM.  
+Instead, both work together:
+
+### IAM Policies
+- Applied to users, groups, and roles inside a single AWS account.
+- Control access to services, resources, and API actions.
+- Cannot restrict the root user.
+
+### Service Control Policies (SCPs)
+- Applied at the organization or OU level.
+- Affect all IAM users, roles, and even the root user.
+- Used to enforce high-level restrictions across accounts.
+
+Example:  
+You can use an SCP to block the use of certain services (like EC2) in an entire OU.
+
+---
+
+## Setting Up AWS Organizations
+
+To set up an organization, you typically follow these steps:
+
+### Step 1: Create the Organization
+- Use your current AWS account as the management (primary) account.
+- Invite existing accounts or create new member accounts.
+
+### Step 2: Create Organizational Units (OUs)
+- Organize accounts into OUs based on structure (e.g., Dev, Prod, Finance).
+
+### Step 3: Create Service Control Policies (SCPs)
+- Define what actions are allowed or denied.
+- Attach SCPs to OUs or accounts.
+
+### Step 4: Test the Policies
+- Sign in as users in each account to verify the restrictions.
+- Optionally use the IAM Policy Simulator to test policies.
+
+---
+
+## Limits of AWS Organizations
+
+Some important limits include:
+- Only 1 root per organization.
+- Up to 1,000 OUs.
+- Up to 1,000 policies.
+- Maximum policy size: 5,120 bytes.
+- Maximum OU nesting: 5 levels under the root.
+- Up to 20 invitations per day.
+- Up to 5 member accounts created at the same time.
+- Unlimited entities to attach a policy to.
+
+Names for accounts, OUs, roots, and policies:
+- Must use Unicode characters.
+- Maximum length: 250 characters.
+
+---
+
+## Accessing AWS Organizations
+
+You can manage AWS Organizations through:
+
+### AWS Management Console
+- Browser-based interface.
+- Easiest for visual management.
+
+### AWS CLI
+- Command-line tool.
+- Faster for automation and scripting.
+
+### AWS SDKs
+- Libraries for languages like Python, Java, .NET, Ruby, iOS, Android.
+- Handle signing, retries, and error management automatically.
+
+### HTTPS Query API
+- Direct programmatic access.
+- Requires manually signing requests.
+
+---
+ 
+
+
+# Section 4: AWS Billing and Cost Management
+
+AWS Billing and Cost Management is the service used to pay your AWS bill, monitor usage, analyze spending, and plan future costs. It provides tools to help you understand where your money is going and how to optimize your AWS environment.
+
+---
+
+## Overview of AWS Billing and Cost Management
+
+This service allows you to:
+- View and pay your AWS bill.
+- Track usage and spending over time.
+- Forecast future costs.
+- Set budgets and receive alerts.
+- Analyze cost trends using filters and grouping.
+- Access detailed cost and usage reports.
+
+You can view data by month or by day, and filter by service, region, account, and more.
+
+---
+
+## AWS Billing Dashboard
+
+The Billing Dashboard provides a high-level view of your current spending.
+
+### Key Components:
+**Spend Summary**  
+- Shows last month's total cost.  
+- Shows current month-to-date spending.  
+- Provides a forecast for the rest of the month.
+
+**Month-to-Date Spend by Service**  
+- Shows which AWS services are generating the most cost.  
+- Helps identify major cost drivers.
+
+The dashboard is the starting point for accessing all other cost tools.
+
+---
+
+## Tools Available in Billing and Cost Management
+
+From the dashboard, you can access several tools:
+
+### 1. AWS Bills
+- Shows your monthly bill.
+- Breaks down costs by service, region, and linked account.
+- Provides the most up-to-date cost and usage information.
+
+### 2. AWS Cost Explorer
+A graphical tool for analyzing AWS spending.
+
+Cost Explorer allows you to:
+- View charts of your costs.
+- See cost data for the past 13 months.
+- Forecast spending for the next 3 months.
+- Identify spending patterns and cost anomalies.
+- See which services or accounts are used the most.
+- View metrics such as traffic by Availability Zone.
+
+It includes default reports like:
+- Monthly running costs (past 3 months)
+- Forecasted costs with confidence intervals
+
+Cost Explorer is free to use.
+
+---
+
+## Forecasting and Tracking Costs with AWS Budgets
+
+AWS Budgets uses Cost Explorer data to help you track and control spending.
+
+With AWS Budgets, you can:
+- Set custom budgets (monthly, quarterly, yearly).
+- Track actual and forecasted costs.
+- Receive alerts when:
+  - You exceed your budget.
+  - Your estimated costs are predicted to exceed your budget.
+
+Alerts can be sent via:
+- Email  
+- Amazon SNS  
+
+Budgets help prevent unexpected charges.
+
+---
+
+## AWS Cost and Usage Report (CUR)
+
+The Cost and Usage Report is the most detailed cost reporting tool in AWS.
+
+It provides:
+- Hourly or daily usage data.
+- Cost breakdown by service category.
+- Tax information (if enabled).
+- Line-item details for every usage type.
+
+You can configure AWS to automatically publish these reports to an S3 bucket.  
+Reports are updated once per day.
+
+This tool is useful for:
+- Deep cost analysis  
+- Custom dashboards  
+- Integration with BI tools  
+- Chargeback and cost allocation  
+
+---  
+
+
+# Section 5: Technical Support
+
+AWS Support exists to help customers use AWS successfully, whether they are experimenting, running production workloads, or operating mission‑critical systems. AWS provides a combination of tools, documentation, and human expertise to guide customers through planning, deploying, and optimizing their AWS environments.
+
+---
+
+## AWS Support Overview
+
+AWS Support provides:
+- Tools and resources for troubleshooting and optimization.
+- Guidance for new users, production users, and business‑critical workloads.
+- Different support levels depending on customer needs.
+
+AWS Support helps with:
+- Experimenting with AWS services.
+- Running production applications.
+- Supporting business‑critical systems.
+
+---
+
+## Key AWS Support Resources
+
+### Technical Account Manager (TAM)
+- A designated technical advisor for Enterprise customers.
+- Provides architectural guidance, best practices, and ongoing communication.
+- Helps plan, deploy, and optimize workloads.
+
+### AWS Trusted Advisor
+- An online tool that checks your AWS environment for:
+  - Cost optimization
+  - Performance improvements
+  - Fault tolerance
+  - Security best practices
+  - Service limits
+- Helps identify opportunities to reduce costs and improve efficiency.
+
+### AWS Support Concierge
+- A billing and account specialist.
+- Handles non‑technical issues such as billing questions, account setup, and payment concerns.
+
+---
+
+## AWS Support Plans
+
+AWS offers four support plans, each designed for different use cases.
+
+### 1. Basic Support (Free)
+Includes:
+- 24/7 access to customer service.
+- Documentation, whitepapers, and support forums.
+- Access to six core Trusted Advisor checks.
+- Access to the AWS Personal Health Dashboard.
+
+Best for:
+- New users
+- Learning and experimentation
+- Non‑critical workloads
+
+---
+
+### 2. Developer Support
+Designed for early development and testing.
+
+Best for customers who:
+- Want technical guidance.
+- Are exploring AWS for the first time.
+- Run non‑production workloads.
+
+---
+
+### 3. Business Support
+Designed for production workloads.
+
+Best for customers who:
+- Run applications in production.
+- Use multiple AWS services heavily.
+- Need fast support for operational issues.
+- Require guidance on availability, scalability, and security.
+
+---
+
+### 4. Enterprise Support
+Designed for mission‑critical workloads.
+
+Includes:
+- Technical Account Manager (TAM)
+- Proactive management and architectural guidance
+- Support for launches and migrations
+- Best‑practice reviews
+
+Best for customers who:
+- Depend on AWS for core business operations.
+- Need the highest level of support and response times.
+
+---
+
+## Case Severity and Response Times
+
+When opening a support case, the response time depends on:
+1. The support plan you have.
+2. The severity level of the issue.
+
+### Severity Levels
+- **Critical** – Business is at risk; critical functions unavailable.
+- **Urgent** – Major impact; important functions unavailable.
+- **High** – Important functions impaired or degraded.
+- **Normal** – Non‑critical issues or time‑sensitive development questions.
+- **Low** – General questions or feature requests.
+
+Important:
+- The **Basic Support Plan does not include case support**.
+- Higher plans offer faster response times for higher severity levels.
+
+---
+
+# Key Takeaways (All Sections)
+
+- AWS pricing is consumption-based and flexible.  
+- Reserved Instances and tiered pricing reduce costs significantly.  
+- TCO reveals the true cost difference between on-premises and cloud.  
+- AWS Organizations centralizes governance and billing across accounts.  
+- Billing tools (Cost Explorer, Budgets, CUR) help control and optimize spending.  
+- AWS Support offers multiple plans, from basic resources to enterprise-level guidance.  
+- Enterprise Support includes a TAM and proactive architectural assistance.  
+
+---
+
+# Quick Memory Points
+
+- Pay only for what you use  
+- Reserved Instances = major savings  
+- Tiered pricing = cheaper as usage grows  
+- TCO = full cost comparison  
+- On-prem = CapEx; Cloud = OpEx  
+- Organizations = central account management  
+- OUs + SCPs = structured governance  
+- Cost Explorer = trends and forecasts  
+- Budgets = alerts  
+- CUR = detailed cost data  
+- Support plans: Basic → Developer → Business → Enterprise  
+- TAM = Enterprise only  
+- Trusted Advisor = optimization checks 

@@ -1,0 +1,140 @@
+## 1. What is a Programming Paradigm?
+A programming paradigm is a specific way of thinking and organizing code.  
+Goal: reduce complexity and make code easier to read, maintain, and reuse.
+
+Why paradigms matter:
+- easier to reason about
+- more readable
+- more reusable
+- easier to change
+
+---
+
+# 2. Structured Programming
+
+## Main idea
+Use clear control-flow structures instead of `goto`.
+
+Examples of structured control:
+- if/else
+- loops (while, for)
+- functions
+- try/catch
+
+### Bad (spaghetti code with goto):
+    ```c
+    10 print "Hello"
+    20 goto 10
+    ```
+
+### Good (structured):
+    ```python
+    i = 0
+    while i < 10:
+        print(i)
+        i += 1
+    ```
+
+Summary:  
+"Structured = control flow with if/else/loops, not jumping around."
+
+---
+
+# 3. Object-Oriented Programming (OOP)
+
+## Main idea
+Everything is an object with:
+- state (instance variables)
+- behavior (methods)
+
+Key concepts:
+- Encapsulation
+- Inheritance
+- Polymorphism
+- Abstraction (interfaces)
+
+### Example:
+    ```java
+    class Animal {
+        void speak() { System.out.println("..."); }
+    }
+
+    class Dog extends Animal {
+        @Override
+        void speak() { System.out.println("Woof"); }
+    }
+    ```
+
+Summary:  
+"OOP is good when you have many types of things, each with behaviors."
+
+---
+
+# 4. Functional Programming (FP)
+
+## Main idea
+Use pure functions and avoid side effects.
+
+### Side effect:
+Anything a function does besides returning a value  
+(printing, updating a variable, writing to DB, etc.)
+
+### Pure function:
+- depends only on parameters  
+- no side effects  
+
+### Example (pure):
+    ```java
+    int add(int a, int b) {
+        return a + b;
+    }
+    ```
+
+### Example (impure):
+    ```java
+    count++; // modifies external state
+    ```
+
+Other FP ideas:
+- immutability
+- recursion instead of loops
+- functions as values
+- higher-order functions
+
+### Example:
+    ```javascript
+    const double = x => x * 2;
+    const map = (fn, list) => list.map(fn);
+
+    map(double, [1,2,3]); // [2,4,6]
+    ```
+
+Summary:  
+"FP = pure functions, immutability, avoid side effects."
+
+---
+
+# 5. OOP vs FP — When Each Shines
+
+## OOP is best when:
+- many **things** (objects)
+- each thing has fixed operations
+- adding new types is easy
+
+## FP is best when:
+- many **operations**
+- data shape is stable
+- adding new operations is easy
+- distributed systems (FP handles side effects better)
+
+Summary:  
+"OOP = many objects. FP = many operations."
+
+---
+
+# 6. Final Summary
+- Paradigms help manage complexity  
+- Structured programming is the foundation  
+- OOP organizes code around objects and behavior  
+- FP focuses on pure functions and immutability  
+- Both OOP and FP are useful and often used together  

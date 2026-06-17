@@ -1,0 +1,156 @@
+
+# What I Need to Know About Testing Modular Designs
+
+When an application is modular (UI → Controller → Repository → Database), each part has one responsibility.  
+Testing modular designs means testing each module separately, replacing the other layers with stubs, mocks, or fakes.
+
+This is exactly what we do in the lab.
+
+---
+
+# 1. What is modular design?
+
+A modular design splits the system into independent components:
+
+- UI layer → builds screens  
+- Controller layer → handles logic and navigation  
+- Repository layer → communicates with the database  
+- Core models → represent data (Category, Product, etc.)
+
+Each module has a clear job and doesn’t depend too much on the others.
+
+### Why this matters for testing:
+- I can test each module separately  
+- I don’t need a database to test logic  
+- I don’t need UI to test controllers  
+- I can replace modules with stubs/mocks  
+
+---
+
+# 2. Why modular design makes testing easier
+
+Because each module is isolated, I can test:
+
+- UI without database  
+- Controller without UI  
+- Repository without controller  
+- Validation without anything else  
+
+This makes tests:
+
+- simpler  
+- faster  
+- more reliable  
+
+---
+
+# 3. How to test each module
+
+## UI tests
+- Check if the UI builds the correct scene  
+- Check if buttons call the right callbacks  
+- Use JavaFX test helpers  
+- Do NOT open real windows  
+
+## Controller tests
+- Replace UI with a MainWindowStub  
+- Replace repository with a fake repo  
+- Verify:
+  - correct methods are called  
+  - correct titles are set  
+  - correct errors are shown  
+
+## Repository tests
+- Use a temporary SQLite file  
+- Test CRUD operations  
+- Make sure data is saved and retrieved correctly  
+
+## Validation tests
+- Test valid and invalid inputs  
+- Test error messages  
+- Test edge cases (empty name, long description, duplicates)  
+
+---
+
+# 4. Tools used in modular testing
+
+### Stubs
+Fake objects that simulate behavior.  
+Used for UI and repository.
+
+### Mocks
+Objects that record interactions.  
+Often used for controller tests.
+
+### Fakes
+Simplified implementations (like an in‑memory database).
+
+### AtomicBoolean
+Used to detect whether a method was called.
+
+### AssertJ (`assertThat`)
+Readable assertions for behavior.
+
+---
+
+# 5. What professors expect me to explain
+
+### A modular system is easier to test because:
+- Each module has a single responsibility  
+- Modules can be replaced with stubs  
+- Tests become isolated and predictable  
+- I avoid side effects (UI, DB, network)  
+- I can test logic without running the whole app  
+
+### Example exam question:
+"Why is modular design important for testing?"
+
+Expected answer:
+Because each module can be tested independently using stubs or mocks, without relying on real UI or database components. This makes tests faster, more reliable, and easier to maintain.
+
+---
+
+# 6. How my lab demonstrates modular testing
+
+### UI module
+- Tested by checking title changes  
+- Tested by verifying scene creation  
+
+### Controller module
+- Tested with MainWindowStub  
+- Tested with fake CategoryRepository  
+- Tests behavior, not implementation  
+
+### Repository module
+- Tested with temporary SQLite file  
+- Ensures persistence works  
+
+### Validation module
+- Tested with different inputs  
+- Ensures correct Pass/Fail results  
+
+---
+
+# 7. Key phrases I should memorize for the exam
+
+- "Modular design enables isolated testing."  
+- "Each module can be replaced with a stub or mock."  
+- "Controllers can be tested without UI or database."  
+- "Repositories can be tested with temporary databases."  
+- "Validation logic is pure and easy to test."  
+- "AtomicBoolean is used to detect method calls."  
+- "AssertJ provides readable behavior assertions."  
+
+---
+
+# 8. Explain these:
+
+- What a stub is: a fake object used to isolate a module during testing.  
+- Why modular design helps testing: because each part can be tested independently.
+- How to test controllers with stubs: by replacing the UI and repository and checking behavior.
+- How to test validation logic: is tested by giving valid and invalid inputs and checking the results.
+- How to test repositories: are tested using a temporary database to verify CRUD operations.
+- Why we avoid real UI/DB in unit tests: to keep tests fast, isolated, and reliable.
+- Why we override only necessary methods: to keep stubs simple and focused. 
+- Why AtomicBoolean is used :  to detect whether a method was actually called.
+- Why assertThat is preferred: because it produces clearer and more readable assertions.

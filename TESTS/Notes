@@ -1,0 +1,222 @@
+> *hidden dependency*: A function that depends on a global variable
+> A pure function *IS* always produces the *same output* for the *same input* and has no side effects.
+> Considered data: A record representing a customer
+> Considered an action in programming paradigms: Printing to the console
+> Emphasize pure functions and immutability: Functional
+> In MVC, the controller *NOT* is responsible for rendering the user interface
+> UUID.randomUUID() *NOT* is considered a calculation because it always returns the same value for the same input.
+> Amazon S3: service provides object storage
+> COmo extrair calculation de action: 
+> Advantages of sealed interfaces in Java: Restricting implementations, Compiler awareness of all types, Improving type safety
+> Records is best for representing immutable facts
+> AWS is *responsible for securing* the *cloud infrastructure* *data centers*
+> Automatic bug reduction *NOT* is a direct benefit of cloud computing
+> cloud computing benefits: High availability, Elasticity, Pay-per-use
+> examples of side effects: Updating a global variable, Saving to a file, Printing output
+> An *AWS Region* is a group of *Availability Zones*
+> *integration test* is test that interacts with a *real database*
+
+> Hidden dependencies occur when a function relies on external state not passed as parameters.
+> AWS secures the physical infrastructure, including data centers.
+> Diferenca: the Functional Core is the pure logic, and the Imperative Shell is the “glue” that makes the program interact with the real world.
+
+## short coding question out
+
+- PASSO 1 — Pergunte: é DATA, CALCULATION ou ACTION?
+- PASSO 2 — Se for DATA → comece com um RECORD `(record Customer(String name, int age) {})`
+- PASSO 3 — Se for CALCULATION → comece com uma PURE FUNCTION `(int calcSomething(int x, int y) {return ...; // sem Side effects } )`
+- PASSO 4 — Se for ACTION → isole o action e extraia o cálculo: 
+
+Exemplo ruim (mistura tudo):
+`System.out.println(total); return total + tax;`
+
+Exemplo bom (separado):
+`double calcTotal(double total, double tax) { return total + tax;}`
+`void printTotal(double total) {System.out.println(total);}`
+
+- PASSO 5 — Se houver “implícito” → remova
+
+Exemplo ruim:
+`globalCount++;`
+
+Versão boa:
+`int increment(int count) { return count + 1;}`
+
+- PASSO 6 — Se envolver categorias → use ENUM: `enum Rank { GOOD, BAD, BEST }`
+
+- PASSO 7 — Se envolver resultados → use sealed interface:
+`sealed interface Result permits Success, Error {}`
+`record Success(int value) implements Result {}`
+`record Error(String message) implements Result {}`
+
+## COMO TRANSFORMAR UM ACTION EM CALCULATION
+
+PASSO 1 — Identificar o problema (por que é ACTION?)
+- Tem side effect?
+- Usa variável global?
+- Modifica lista externa?
+- Imprime?
+- Lê hora do sistema?
+- Escreve em arquivo?
+
+PASSO 2 — Extrair o cálculo (pure function): pega só a parte matemática / lógica e coloca dentro de uma função pura
+
+PASSO 3 — Deixar o ACTION mínimo (opcional)
+
+EXEMPLO 1 — Código original (ACTION)
+`int total = 0;`
+
+`void addPrice(Item item) {total += item.price();   // *modifica variável global → ACTION* }`
+
+Transformação para CALCULATION
+
+`int calcNewTotal(int total, Item item) {return total + item.price();   // pure function}`
+
+## O QUE UMA FUNÇÃO PURA PODE TER
+- Receber parâmetros: int calc(int x, int y)
+- Retornar um valor: return x + y;
+- Operações matemáticas: x + y // x * y // x - y
+- Comparações: x > y // x == y
+- Criar novas listas/objetos (imutáveis): new ArrayList<>(list)
+- Loops (for, while) — desde que NÃO modifiquem nada externo: for (var n : nums) total += n;
+- Chamadas para OUTRAS funções puras: return calcArea(width, height);
+
+MODELO DE FUNÇÃO PURA
+int calcSum(int x, int y) {
+    return x + y;   // pure function
+}
+
+Outro:
+
+List<Integer> addItem(List<Integer> list, int item) {
+    var newList = new ArrayList<>(list);
+    newList.add(item);
+    return newList;
+}
+
+
+## O QUE UMA ACTION PODE TER
+- PRINTAR NA TELA: System.out.println("Hello");
+- LER OU ESCREVER EM ARQUIVO: Files.writeString(path, "data");
+- ACESSAR BANCO DE DADOS: db.save(user);
+- MODIFICAR VARIÁVEL GLOBAL: globalCount++;
+- MODIFICAR LISTA EXTERNA (mutável): list.add(item);
+- GERAR VALORES NÃO DETERMINÍSTICOS: 
+UUID.randomUUID();
+Math.random();
+LocalDate.now();
+- LER INPUT DO USUÁRIO: scanner.nextLine();
+- CHAMAR API, INTERNET, REDE: httpClient.send(request);
+- MEXER EM TEMPO, DATA, RELÓGIO: LocalTime.now();
+
+MODELO DE UMA ACTION:
+void saveUser(User user) {
+    System.out.println("Saving...");
+    db.save(user); // action
+}
+
+
+## @Test
+COMO COMEÇAR QUALQUER TESTE COM:
+@Test
+void nameOfTest() {
+    // arrange
+    // act
+    // assert
+}
+
+| Parte | Código | Explicação |
+| --- | --- | --- |
+| **arrange** | ``var ``x ``= ``10;`` | preparar dados |
+| **act** | ``var ``result ``= ``calc(x);`` | chamar função |
+| **assert** | ``assertEquals(20, ``result);`` | verificar resultado |
+
+@Test
+void calcSum_addsCorrectly() {
+    // arrange
+    var x = 2;
+    var y = 3;
+
+    // act
+    var result = calcSum(x, y);
+
+    // assert
+    assertEquals(5, result);
+}
+
+
+1. TESTE DE FUNÇÃO PURA
+
+int calcSum(int x, int y) {
+    return x + y;
+}
+
+.test
+
+@Test
+void calcSum_addsNumbersCorrectly() {
+    var result = calcSum(2, 3);
+    assertEquals(5, result);
+}
+
+2. TESTE DE FUNÇÃO COM LISTA
+
+List<Integer> addItem(List<Integer> list, int item) {
+    var newList = new ArrayList<>(list);
+    newList.add(item);
+    return newList;
+}
+
+.test
+@Test
+void addItem_returnsNewListWithItem() {
+    var list = List.of(1, 2);
+    var result = addItem(list, 3);
+
+    assertEquals(List.of(1, 2, 3), result);
+}
+
+3. TESTE DE CONTROLLER
+
+@Test
+void controller_callsServiceCorrectly() {
+    var stub = new FakeService();
+    var controller = new Controller(stub);
+
+    controller.save("Ana");
+
+    assertEquals("Ana", stub.savedName);
+}
+## ARRANGE — ACT — ASSERT
+| Etapa | Significado | O que você faz | Exemplo |
+| --- | --- | --- | --- |
+| **arrange** | preparar o cenário | criar variáveis, listas, objetos | ``var ``x ``= ``10;`` |
+| **act** | executar a ação | chamar a função que será testada | ``var ``result ``= ``calc(x);`` |
+| **assert** | verificar o resultado | comparar o resultado esperado com o real | ``assertEquals(20, ``result);`` |
+
+## TIPOS DO JAVA
+
+| Tipo | O que é | Exemplo |
+| --- | --- | --- |
+| **String** | texto | ``"Barbara"`` |
+| **boolean** | verdadeiro/falso | ``true``, ``false`` |
+| **int** | número inteiro | ``25`` |
+| **double** | número decimal | ``19.99`` |
+| **var** | Java descobre o tipo automaticamente | ``var ``nome ``= ``"Ana";`` |
+| **void** | método que não retorna nada | ``void ``print()`` |
+| **List<T>** | lista de valores | ``List.of(1,2,3)`` |
+| **record** | estrutura de dados imutável | ``record ``User(String ``n, ``int ``a){}`` |
+| **enum** | categorias fixas | ``enum ``Rank ``{ ``GOOD, ``BAD ``}`` |
+| **sealed interface** | interface com tipos limitados | ``sealed ``interface ``R ``permits ``S,E ``{}`` |
+
+
+## review final 
+| Categoria | Lembrete rápido |
+| --- | --- |
+| **Função pura** | só calcula, não muda nada |
+| **Action** | imprime, salva, lê, modifica |
+| **Testes** | arrange → act → assert |
+| **Tipos** | String, boolean, int, double, var, void |
+| **Data** | record, enum |
+| **Cálculo** | pure function |
+| **Action** | side effects |

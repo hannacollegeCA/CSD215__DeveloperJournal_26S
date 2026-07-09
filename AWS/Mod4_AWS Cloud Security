@@ -1,0 +1,357 @@
+# Module 4 - AWS Cloud Security
+
+# AWS Cloud Security — Summary of Module
+
+## Overview
+This document summarizes the key concepts learned in the AWS Cloud Security module, including shared responsibility, IAM fundamentals, account security best practices, and AWS compliance.
+
+---
+
+## Shared Responsibility Model
+You learned how to recognize the AWS shared responsibility model:
+
+- **AWS** is responsible for security *of* the cloud (infrastructure, hardware, software, networking, data centers).
+- **Customer** is responsible for security *in* the cloud (data, configurations, IAM, applications, network settings).
+
+---
+
+## Customer vs AWS Responsibilities
+You learned how to identify which responsibilities belong to AWS and which belong to the customer:
+
+- AWS protects the global infrastructure.
+- Customers protect their workloads, data, permissions, and configurations.
+
+---
+
+## IAM Users, Groups, and Roles
+You learned how to recognize the three main IAM identity types:
+
+### IAM Users
+- Individual identities for people or applications.
+- Can have console access, programmatic access, or both.
+
+### IAM Groups
+- Collections of users.
+- Used to apply permissions to multiple users at once.
+
+### IAM Roles
+- Identities with temporary credentials.
+- Used to delegate access without sharing long-term keys.
+
+---
+
+# AWS Shared Responsibility Model
+
+## Visão Geral
+A segurança na AWS é dividida entre AWS e cliente.  
+AWS protege a infraestrutura da nuvem.  
+O cliente protege tudo o que ele cria, configura e armazena dentro da nuvem.
+
+---
+
+## AWS: Security OF the Cloud
+A AWS é responsável por proteger toda a infraestrutura física e lógica que sustenta os serviços da nuvem.
+
+### Responsabilidades da AWS
+- Segurança física dos data centers.
+- Hardware: servidores, discos, equipamentos.
+- Software base: sistema operacional do host, hypervisor.
+- Rede: switches, roteadores, firewalls, cabos.
+- Regiões, Availability Zones e edge locations.
+- Monitoramento contínuo da infraestrutura.
+
+A AWS garante que a estrutura está segura e auditada por terceiros.
+
+---
+
+## Cliente: Security IN the Cloud
+O cliente é responsável por tudo o que ele implementa e configura dentro da nuvem.
+
+### Responsabilidades do Cliente
+- Sistema operacional das instâncias EC2 (patches e atualizações).
+- Aplicações instaladas nas instâncias.
+- Configuração de security groups e firewalls.
+- Configuração da VPC (sub-redes, rotas, ACLs).
+- Gerenciamento de usuários, senhas e IAM.
+- Criptografia de dados em repouso e em trânsito.
+- Controle de acesso aos dados.
+- Escolha de onde os dados ficam e quem acessa.
+
+O cliente mantém controle total sobre seus dados e permissões.
+
+---
+
+## Modelos de Serviço e Responsabilidades
+
+### IaaS (Infrastructure as a Service)
+**Exemplo:** Amazon EC2  
+O cliente tem maior controle e maior responsabilidade.
+
+Responsabilidades do cliente:
+- Sistema operacional da instância.
+- Patches e atualizações.
+- Aplicações instaladas.
+- Security groups.
+
+### PaaS (Platform as a Service)
+**Exemplos:** Amazon RDS, AWS Lambda  
+A AWS gerencia infraestrutura, sistema operacional e plataforma.
+
+Responsabilidades do cliente:
+- Dados.
+- Permissões.
+- Classificação dos dados.
+
+### SaaS (Software as a Service)
+**Exemplos:** AWS Shield, AWS Trusted Advisor, Amazon Chime  
+A AWS gerencia toda a aplicação e infraestrutura.
+
+Responsabilidades do cliente:
+- Controle de acesso.
+- Uso correto do serviço.
+
+---
+
+## Cenário de Exemplo: EC2 + VPC + S3 + Oracle DB
+
+### Responsabilidades do Cliente
+- Atualizar e aplicar patches no sistema operacional do EC2.
+- Manter aplicações instaladas no EC2.
+- Configurar security groups.
+- Configurar VPC (sub-redes, rotas, ACLs).
+- Gerenciar acesso ao S3.
+- Gerenciar credenciais e IAM.
+
+Essas tarefas são equivalentes às realizadas em servidores locais.
+
+---
+
+## Resumo Final
+- AWS: segurança da nuvem.  
+- Cliente: segurança na nuvem.  
+- IaaS: cliente faz mais.  
+- PaaS: cliente faz menos.  
+- SaaS: cliente apenas utiliza o serviço.
+
+# AWS Shared Responsibility Model — Scenario 2
+
+## Visão Geral
+Este cenário analisa quem é responsável pela segurança quando um cliente utiliza Amazon S3, Amazon VPC, uma instância EC2 com servidor web e um Internet Gateway para acesso externo.
+
+A regra geral permanece:
+- AWS é responsável pela **segurança da nuvem**.
+- O cliente é responsável pela **segurança na nuvem**.
+
+---
+
+## Serviços Utilizados no Cenário
+- Amazon S3 para armazenamento de dados.
+- Amazon VPC configurada pelo cliente.
+- Instância EC2 rodando um servidor web dentro da VPC.
+- Internet Gateway para permitir acesso externo.
+- AWS CLI acessado via chaves SSH.
+
+---
+
+## Responsabilidades da AWS (Security OF the Cloud)
+A AWS protege toda a infraestrutura que suporta os serviços utilizados:
+
+- Segurança física dos data centers.
+- Hardware: servidores, discos, equipamentos.
+- Software base: sistema operacional do host e hypervisor.
+- Rede global: roteadores, switches, firewalls, cabos.
+- Regiões, Availability Zones e edge locations.
+
+A AWS garante que a infraestrutura está segura e em conformidade com padrões de auditoria.
+
+---
+
+## Responsabilidades do Cliente (Security IN the Cloud)
+O cliente é responsável por tudo o que ele implementa, configura e gerencia dentro da nuvem.
+
+### EC2
+- Atualização e patches do sistema operacional.
+- Manutenção das aplicações instaladas.
+- Configuração de security groups (firewall).
+
+### VPC
+- Configuração de sub-redes, rotas e ACLs.
+- Configuração do Internet Gateway.
+- Controle das regras de tráfego.
+
+### AWS CLI e SSH
+- Gerenciamento das chaves SSH.
+- Proteção das credenciais IAM.
+
+### S3
+- Controle de permissões de acesso.
+- Políticas de segurança e criptografia.
+
+---
+
+## Pontos-Chave
+- AWS e cliente compartilham responsabilidades.
+- AWS cuida da infraestrutura da nuvem.
+- Cliente cuida da segurança dos recursos que ele cria.
+- Em serviços IaaS, como EC2, o cliente tem mais responsabilidades.
+- O cliente deve aplicar patches, configurar firewalls e gerenciar acessos.
+
+---
+
+## Resumo Final
+Neste cenário, a AWS protege a infraestrutura.  
+O cliente protege EC2, VPC, S3, rede, aplicações, credenciais e chaves SSH.
+
+# 2. AWS Identity and Access Management (IAM)
+
+## Visão Geral
+AWS Identity and Access Management (IAM) é o serviço que controla quem pode acessar recursos na AWS e quais ações podem ser realizadas. Ele gerencia autenticação e autorização para usuários, grupos, roles e aplicações. IAM é gratuito e faz parte da sua conta AWS.
+
+---
+
+## Componentes Essenciais
+
+### IAM User
+- Representa uma pessoa ou aplicação.
+- Possui credenciais próprias.
+- Nome único dentro da conta.
+- Diferente do root user.
+
+### IAM Group
+- Conjunto de usuários.
+- Facilita a gestão de permissões.
+- Permissões aplicadas ao grupo valem para todos os membros.
+
+### IAM Policy
+- Documento JSON que define permissões.
+- Especifica ações permitidas ou negadas.
+- Pode ser anexada a usuários, grupos, roles ou recursos.
+
+### IAM Role
+- Concede acesso temporário.
+- Usado por serviços, aplicações ou contas externas.
+- Não possui credenciais fixas.
+
+---
+
+## Autenticação
+
+### Tipos de acesso
+- **Programmatic access**: Access Key ID + Secret Access Key (CLI, SDK, APIs).
+- **Console access**: Account ID/alias, username, password, MFA.
+
+---
+
+## MFA (Multi-Factor Authentication)
+- Adiciona uma segunda etapa de autenticação.
+- Pode ser virtual (apps), U2F ou hardware.
+- Recomendado para aumentar segurança.
+
+---
+
+## Autorização
+
+### Conceitos
+- Por padrão, tudo é negado (implicit deny).
+- Permissões são concedidas por policies.
+- Deny sempre vence conflitos.
+- IAM é global, não depende de região.
+
+### Princípio do Menor Privilégio
+- Conceda apenas o mínimo necessário.
+- Comece com permissões restritas.
+- Adicione permissões conforme a necessidade.
+
+---
+
+## Tipos de Policies
+
+### Identity-based policies
+- Anexadas a usuários, grupos ou roles.
+- Subtipos:
+  - **Managed policies**: reutilizáveis.
+  - **Inline policies**: específicas para um único identity.
+
+### Resource-based policies
+- Anexadas diretamente ao recurso (ex.: S3 bucket).
+- Controlam quem pode acessar o recurso e sob quais condições.
+
+---
+
+## Resumo Final
+- IAM controla autenticação e autorização.
+- Users, groups, roles e policies são os pilares do IAM.
+- MFA aumenta segurança.
+- Policies definem permissões.
+- Sempre siga o princípio do menor privilégio.
+
+# 3. Securing a New AWS Account — Resumo Estudante
+
+## Root User vs IAM User
+Ao criar uma conta AWS, você recebe um único usuário root com acesso total a todos os recursos.  
+O root user **não deve ser usado para tarefas diárias**.  
+A AWS recomenda criar IAM users com permissões específicas seguindo o princípio do menor privilégio.
+
+---
+
+## Passos para Parar de Usar o Root User
+
+1. Logado como root, crie um IAM user com acesso ao console.
+2. Crie um IAM group (ex.: FullAccess) e anexe políticas de administrador.
+3. Adicione o IAM user ao grupo.
+4. Delete as access keys do root user.
+5. Configure uma password policy forte.
+6. Copie o link de login do IAM e faça login com o novo usuário.
+7. Armazene as credenciais do root em local seguro.
+
+---
+
+## Multi-Factor Authentication (MFA)
+
+Ativar MFA é essencial para proteger:
+- Root user
+- IAM users
+- Acesso programático (opcional)
+
+Opções de MFA:
+- Aplicativos virtuais (Google Authenticator, Authy)
+- Chaves U2F
+- Dispositivos físicos
+
+---
+
+## AWS CloudTrail
+
+AWS CloudTrail registra todas as chamadas de API na conta.
+
+Características:
+- Ativado por padrão.
+- Guarda 90 dias de eventos.
+- Permite auditoria de criação, modificação e exclusão de recursos.
+
+Para retenção maior:
+- Crie um trail e envie logs para S3.
+- Configure alertas.
+---
+
+## Billing Reports
+
+Ativar o AWS Cost and Usage Report ajuda a monitorar:
+- Uso detalhado dos serviços
+- Custos estimados
+- Cobrança por hora ou por dia
+
+Os relatórios são enviados para um bucket S3 e atualizados diariamente.
+
+---
+
+## Section 3 — Key Takeaways
+
+- Ative MFA para root e IAM users.
+- Delete as access keys do root user.
+- Crie IAM users individuais com permissões mínimas necessárias.
+- Use grupos para gerenciar permissões.
+- Configure uma password policy forte.
+- Use roles para delegar acesso temporário.
+- Monitore a conta com AWS CloudTrail.
+

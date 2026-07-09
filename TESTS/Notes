@@ -52,7 +52,7 @@ Versão boa:
 ## COMO TRANSFORMAR UM ACTION EM CALCULATION
 
 PASSO 1 — Identificar o problema (por que é ACTION?)
-- Tem side effect?
+- Tem side effect? 
 - Usa variável global?
 - Modifica lista externa?
 - Imprime?
@@ -70,7 +70,8 @@ EXEMPLO 1 — Código original (ACTION)
 
 Transformação para CALCULATION
 
-`int calcNewTotal(int total, Item item) {return total + item.price();   // pure function}`
+`int calcNewTotal(int total, Item item) {
+    return total + item.price();   // pure function}`
 
 ## O QUE UMA FUNÇÃO PURA PODE TER
 - Receber parâmetros: int calc(int x, int y)

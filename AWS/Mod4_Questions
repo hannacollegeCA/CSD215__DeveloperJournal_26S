@@ -1,0 +1,63 @@
+# AWS Security & IAM – Quiz Answers
+
+## 1. Shared Responsibility Model  
+**Question:** In the shared responsibility model, AWS is responsible for providing what?  
+- Security of the cloud
+
+---
+
+## 2. Security in the Cloud  
+**Question:** In the shared responsibility model, which of the following are examples of “security in the cloud”? (Choose two.)  
+- Security group configurations  
+- Encryption of data at rest and data in transit
+
+---
+
+## 3. AWS Responsibility  
+**Question:** Which of the following is the responsibility of AWS under the AWS shared responsibility model?  
+- Maintaining physical hardware
+
+---
+
+## 4. IAM Access Types  
+**Question:** When creating an AWS Identity and Access Management (IAM) policy, what are the two types of access that can be granted to a user?  
+- Programmatic access  
+- AWS Management Console access
+
+---
+
+## 5. AWS Organizations  
+**Question:** True or False? AWS Organizations enables you to consolidate multiple AWS accounts so that you centrally manage them.  
+- True
+
+---
+
+## 7. Root User Responsibilities  
+**Question:** Which of the following should be done by the AWS account root user?  
+- Change the AWS support plan
+
+---
+
+## 8. Root User Best Practice  
+**Question:** After initial login, what does AWS recommend as the best practice for the AWS account root user?  
+- Delete the access keys of the AWS account root user
+
+---
+
+## 9. MFA for Console Login  
+**Question:** How would a system administrator add an additional layer of login security to a user's AWS Management Console?  
+- Enable multi-factor authentication
+
+---
+
+## 10. AWS KMS  
+**Question:** True or False? AWS Key Management Service (AWS KMS) enables you to assess, audit, and evaluate the configurations of your AWS resources.  
+- False
+
+---
+
+## 11. IAM Best Practices  
+**Question:** Which of the following are best practices to secure your account using AWS Identity and Access Management (IAM)? (Choose two.)  
+- Manage access to AWS resources  
+- Define fine-grained access rights
+

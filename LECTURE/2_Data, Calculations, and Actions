@@ -124,6 +124,8 @@ Functional programmers prefer:
 - business logic
 - no I/O
 
+
+
 ## Imperative Shell
 - minimal logic
 - handles I/O (DB, network, files)
